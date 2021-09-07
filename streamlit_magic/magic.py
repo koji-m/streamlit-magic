@@ -47,7 +47,7 @@ class StreamlitMagics(Magics):
         # deploy Cloud Run service
         proc = subprocess.run(
             ['gcloud', 'run', 'deploy', service_name, '--image', f'gcr.io/{self._project_id}/{self._image_name}:latest',
-             '--region', self._cloud_run_region, '--allow-unauthenticated', '--args',
+             '--region', self._cloud_run_region, '--args',
              f'{self._project_id},{service_name},{self._bucket_name},{self._blob_prefix}{service_name}.py',
              '--project', self._project_id],
             stdout=subprocess.PIPE,
